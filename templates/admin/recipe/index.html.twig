@@ -1,0 +1,55 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Marmytho - Liste des recettes
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="mb-3">Liste des recettes</h1>
+
+		<a href={{ path('admin_recipe_new')}} class="btn btn-warning mb-3">Ajouter une recette</a>
+
+		<table class="table">
+			<caption>liste des recettes</caption>
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Recette</th>
+					<th scope="col">Description</th>
+					<th scope="col">Modifier</th>
+					<th scope="col">supprimer</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Recette</th>
+					<th scope="col">Description</th>
+					<th scope="col">Modifier</th>
+					<th scope="col">supprimer</th>
+				</tr>
+			</tfoot>
+			<tbody class="table-group-divider">
+				{% for recipe in recipes %}
+					<tr>
+						<th scope="row">{{ recipe.id }}</th>
+						<td>
+							<a href={{ path('admin_recipe_show', { 'slug': recipe.slug } ) }}>{{ recipe.name }}</a>
+						</td>
+						<td>{{ recipe.description }}</td>
+						<td><img src={{ recipe.fileName}} alt={{ recipe.name }} class="img-fluid img-thumbnail"></td>
+						<td>
+							<a href={{ path('admin_recipe_edit', {'slug':recipe.slug} ) }} class="btn btn-primary">Modifier</a>
+						</td>
+						<td>
+							<form action={{ path('admin_recipe_delete', { 'slug': recipe.slug} )}} method="POST">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="submit" class="btn btn-danger" value="Supprimer">
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+{% endblock %}

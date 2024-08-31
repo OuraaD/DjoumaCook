@@ -1,0 +1,55 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Marmytho - liste des Ingredients!
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="mb-3">Liste des ingredients</h1>
+
+		<a href={{ path('admin_ingredient_new')}} class="btn btn-warning mb-3">Ajouter un ingredient</a>
+
+		<table class="table">
+			<caption>Liste des ingredients</caption>
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Ingredient</th>
+					<th scope="col">Image</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Modifier</th>
+					<th scope="col">supprimer</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Ingredient</th>
+					<th scope="col">Image</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Modifier</th>
+					<th scope="col">supprimer</th>
+				</tr>
+			</tfoot>
+			<tbody class="table-group-divider">
+				{% for ingredient in ingredients %}
+					<tr>
+						<th scope="row">{{ ingredient.id }}</th>
+						<td>{{ ingredient.name }}</td>
+						<td><img src={{ ingredient.filename }} alt={{ ingredient.name }} class="img-fluid img-thumbnail w-50"></td>
+						<td>{{ ingredient.price }}</td>
+						<td>
+							<a href={{ path('admin_ingredient_edit', { 'id': ingredient.id} )}} class="btn btn-primary">Modifier</a>
+						</td>
+						<td>
+							<form action={{ path('admin_ingredient_delete', { 'id': ingredient.id} )}} method="POST">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="submit" class="btn btn-danger" value="Supprimer">
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+{% endblock %}

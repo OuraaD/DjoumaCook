@@ -1,0 +1,16 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Marmytho - Ajouter un ingredient
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="mb-3">Ajouter un ingredient</h1>
+
+		{{ form_start(ingredient_form)}}
+		{{ form_rest(ingredient_form)}}
+
+		<input type="submit" value="Ajouter" class="btn btn-primary">
+		{{ form_end(ingredient_form)}}
+	</main>
+{% endblock %}

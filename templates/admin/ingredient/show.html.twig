@@ -1,0 +1,13 @@
+{% extends "admin/base.html.twig" %}
+
+{% block body %}
+	<main class="container">
+		<div class="p-5 bg-light rounded-3">
+			<h1 class="display-5 fw-bold">Ingredient:
+				{{ ingredient.name }}</h1>
+			<img src={{ ingredient.filename}} alt={{ ingredient.name }} class="img-fluid img-thumbnail">
+			<p class="fs-4">Prix:
+				{{ ingredient.price }}</p>
+		</div>
+	</main>
+{% endblock %}
