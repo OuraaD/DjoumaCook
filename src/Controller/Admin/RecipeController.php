@@ -94,7 +94,7 @@ class RecipeController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}', name: 'delete', methods: ['DELETE'])]
+    #[Route('/{slug}', name: 'delete', methods: ['DELETE'])] 
     public function delete(EntityManagerInterface $em, Recipe $recipe): Response
     {
         $em->remove($recipe);
