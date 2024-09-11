@@ -71,7 +71,7 @@
 							<div class="card-body">
 								<h5 class="card-title">{{ recipe.name }}</h5>
 								<p class="card-text">{{ recipe.description|length > 100 ? recipe.description|slice(0, 100) ~ '...' : recipe.description }}</p>
-								<a href="#" class="btn btn-primary">View Recipe</a>
+								<a href="{{ path('recipe_show', { 'slug': recipe.slug }) }}" class="btn btn-primary">View Recipe</a>
 							</div>
 							<div class="card-footer text-muted">
 								{% if recipe.time %}Time:
