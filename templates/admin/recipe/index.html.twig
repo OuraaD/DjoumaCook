@@ -16,6 +16,7 @@
 					<th scope="col">#</th>
 					<th scope="col">Recette</th>
 					<th scope="col">Description</th>
+					<th scope="col">Image</th>
 					<th scope="col">Modifier</th>
 					<th scope="col">supprimer</th>
 				</tr>
@@ -37,7 +38,9 @@
 							<a href={{ path('admin_recipe_show', { 'slug': recipe.slug } ) }}>{{ recipe.name }}</a>
 						</td>
 						<td>{{ recipe.description }}</td>
-						<td><img src={{ recipe.fileName}} alt={{ recipe.name }} class="img-fluid img-thumbnail"></td>
+						
+						<td><img src="{{ asset('img/thumbnails/' ~ recipe.fileName) }}" alt="{{ recipe.name }}" class="img-fluid img-thumbnail"></td>
+
 						<td>
 							<a href={{ path('admin_recipe_edit', {'slug':recipe.slug} ) }} class="btn btn-primary">Modifier</a>
 						</td>
