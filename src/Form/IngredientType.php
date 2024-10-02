@@ -16,7 +16,7 @@ class IngredientType extends AbstractType
         $builder
             ->add('name')
             ->add('thumbnailFile', FileType::class, [
-                'label' => 'Selectionner une image',
+                //'label' => 'Selectionner une image',
                 'required' => false,
                 'mapped' => false,
             ])
