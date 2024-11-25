@@ -18,11 +18,15 @@ class RecipeSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
+        ->add('name', TextType::class, [
+            'required' => false,
+            'label' => 'Nom de la recette',
+            'attr' => [
+                'placeholder' => 'Recherchez une recette...'
+            ],
+        ])
          
-            ->add('Time', IntegerType::class, [
-                'required' => false,
-                'label' => 'Temps'
-            ])
             ->add('People', IntegerType::class, [
                 'required' => false,
                 'label' => 'Nombre de personnes'
@@ -41,11 +45,6 @@ class RecipeSearchType extends AbstractType
                 'placeholder' => 'Choisir une difficulté',
                 'multiple' => false,
                 'expanded' => false
-            ])
-            
-            ->add('Price', NumberType::class, [
-                'required' => false,
-                'label' => 'Prix'
             ]);
          
          

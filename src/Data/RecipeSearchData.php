@@ -4,8 +4,7 @@ namespace App\Data;
 
 class RecipeSearchData
 {
-    public $Time;
+    public $name;
     public $People;
     public $Difficulty;
-    public $Price;
 }

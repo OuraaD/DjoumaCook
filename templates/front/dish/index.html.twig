@@ -1,0 +1,65 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}DjoumaCook - Accueil
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<h1 class="display-5 fw-bold mb-4">DjoumaCook</h1>
+		<p class="fs-4">Notre menu du jour </p>
+
+		<main class="container">
+
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col">
+					<div class="card h-100">
+						<img src="{{asset('img/thumbnails/bruschetta.jpg')}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Petit-déjeuner</h5>
+							<p class="card-text">Bruschetta saumon. Délicieuse tranche de pain grillée, dorée à la perfection, accueillant une explosion de saveur. Simple, rapide et terriblement délicieux.
+							</p>
+							<a href="{{ path('recipe_show', {'slug': recipe[6].slug}) }}" class="btn btn-primary">Voir la recette</a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100">
+						<img src="{{asset('img/thumbnails/dahl lentilles.jpg')}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Déjeuner</h5>
+							<p class="card-text">Dahl lentilles corails/épinards. Plongez dans l'exotisme avec ce plat qui réchauffera votre coeur et vos papilles. Simple, nourrissant et incroyablement réconfortant.
+							</p>
+							<a href="{{ path('recipe_show', {'slug': recipe[2].slug}) }}" class="btn btn-primary">Voir la recette</a>
+						</div>
+
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100">
+						<img src="{{asset('img/thumbnails/croque monsieur.jpg')}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Dîner</h5>
+							<p class="card-text">Croque monsieur au thon. Une tranche de pain dorée et moelleuse. Simple, rapide et terriblement croquant.</p>
+							<a href="{{ path('recipe_show', {'slug': recipe[7].slug}) }}" class="btn btn-primary">Voir la recette</a>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<img src="{{asset('img/thumbnails/gaufre.jpg')}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Gaufre liégoise</h5>
+							<p class="card-text">Gaufre liégoise. Une touche sucrée pour accompagner votre journée.</p>
+							<a href="{{ path('recipe_show', {'slug': recipe[1].slug}) }}" class="btn btn-primary">Voir la recette</a>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</main>
+	{% endblock %}

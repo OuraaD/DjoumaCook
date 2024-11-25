@@ -49,71 +49,71 @@
 {% extends 'front/base.html.twig' %}
 
 {% block body %}
-<main>
-    <h1>Recherche de recettes</h1>
+	<main>
+		<h1>Recherche de recettes</h1>
 
-    {{ form_start(form) }}
-        {{ form_row(form.Time) }}
-        {{ form_row(form.People) }}
-        {{ form_row(form.Difficulty) }}
-        {{ form_row(form.Price) }}
-        <button type="submit">Rechercher</button>
-    {{ form_end(form) }}
+		{{ form_start(form) }}
+		{{ form_row(form.name) }}
+		{{ form_row(form.People) }}
+		{{ form_row(form.Difficulty) }}
+		<button type="submit">Rechercher</button>
+		{{ form_end(form) }}
 
-    <h2>Résultats</h2>
-<div class="row">
-				{% for recipe in recipes %}
-					<div class="col-md-4">
-						<div class="card mb-4">
-							{% if recipe.fileName %}
-								
-														<td><img src="{{ asset('img/thumbnails/' ~ recipe.fileName) }}" class="card-img-top" alt="{{ recipe.name }}" class="img-fluid img-thumbnail"></td>
+		
+		{% if recipes is not empty %}
+    <ul>
+        {% for recipe in recipes %}
+          
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Aucune recette trouvée</p>
+{% endif %}
+		<div class="row">
+			{% for recipe in recipes %}
+				<div class="col-md-4">
+					<div class="card mb-4">
+						{% if recipe.fileName %}
 
+							<td><img src="{{ asset('img/thumbnails/' ~ recipe.fileName) }}" class="card-img-top" alt="{{ recipe.name }}" class="img-fluid img-thumbnail"></td>
+
+						{% endif %}
+						<div class="card-body">
+							<h5 class="card-title">{{ recipe.name }}</h5>
+							<p class="card-text">{{ recipe.description|length > 100 ? recipe.description|slice(0, 100) ~ '...' : recipe.description }}</p>
+							<a href="{{ path('recipe_show', { 'slug': recipe.slug }) }}" class="btn btn-primary">Voir la recette</a>
+						</div>
+						<div class="card-footer text-muted">
+							{% if recipe.time %}Time:
+								{{ recipe.time }}
+								mins
 							{% endif %}
-							<div class="card-body">
-								<h5 class="card-title">{{ recipe.name }}</h5>
-								<p class="card-text">{{ recipe.description|length > 100 ? recipe.description|slice(0, 100) ~ '...' : recipe.description }}</p>
-								<a href="{{ path('recipe_show', { 'slug': recipe.slug }) }}" class="btn btn-primary">View Recipe</a>
-							</div>
-							<div class="card-footer text-muted">
-								{% if recipe.time %}Time:
-									{{ recipe.time }}
-									mins
-								{% endif %}
-								{% if recipe.nbPeople%}
-									| Serves:
-									{{ recipe.nbPeople }}
-								{% endif %}
-								{% if recipe.difficulty %}
-									| Difficulty:
-									{{ recipe.difficulty }}
-								{% endif %}
-							</div>
+							{% if recipe.nbPeople%}
+								| Serves:
+								{{ recipe.nbPeople }}
+							{% endif %}
+							{% if recipe.difficulty %}
+								| Difficulty:
+								{{ recipe.difficulty }}
+							{% endif %}
 						</div>
 					</div>
-				{% endfor %}
-			</div>
+				</div>
+			{% endfor %}
 		</div>
-	</main>
-{% endblock %}
+	</div>
+</main>{% endblock %}
 
-
-
-
-
-
-
-
-    {# {% for recipe in recipes %}
-        <div>
-            <h3>{{ recipe.name }}</h3>
-            <p>Temps : {{ recipe.time }} minutes</p>
-            <p>Pour {{ recipe.nbPeople }} personnes</p>
-            <p>Difficulté : {{ recipe.difficulty }}/6</p>
-            <p>Prix : {{ recipe.price }}€</p>
-            {% if recipe.isFavorite %}
-                <p>Favori</p>
-            {% endif %}
-        </div>
-    {% endfor %}
-{% endblock %} #}
+{# {% for recipe in recipes %}
+	        <div>
+	            <h3>{{ recipe.name }}</h3>
+	            <p>Temps : {{ recipe.time }} minutes</p>
+	            <p>Pour {{ recipe.nbPeople }} personnes</p>
+	            <p>Difficulté : {{ recipe.difficulty }}/6</p>
+	            <p>Prix : {{ recipe.price }}€</p>
+	            {% if recipe.isFavorite %}
+	                <p>Favori</p>
+	            {% endif %}
+	        </div>
+	    {% endfor %}
+	{% endblock %} #}

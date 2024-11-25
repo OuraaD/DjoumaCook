@@ -67,10 +67,11 @@ class RecipeRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('r');
 
-        if ($search->Time) {
-            $query->andWhere('r.time <= :Time')
-                  ->setParameter('Time', $search->Time);
+        if (!empty($search->name)) {
+            $query->andWhere('r.name LIKE :name')
+                  ->setParameter('name', '%' . $search->name . '%');
         }
+
 
      
 
@@ -86,17 +87,6 @@ class RecipeRepository extends ServiceEntityRepository
                   ->setParameter('Difficulty', $search->Difficulty);
         }
 
-       
-        if ($search->Price) {
-            $query->andWhere('r.price <= :Price')
-                  ->setParameter('Price', $search->Price);
-        }
-
-      
-        if (!empty($search->ingredients)) {
-            $query->andWhere(':ingredients MEMBER OF r.ingredients')
-                  ->setParameter('ingredients', $search->ingredients);
-        }
 
         return $query->getQuery()->getResult();
     }
