@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/front/home', name: 'home_index')]
+    #[Route('/', name: 'home_index')]
     public function index(RecipeRepository $repository): Response
     {
         $recipes = $repository->findAll();
