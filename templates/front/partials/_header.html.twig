@@ -24,15 +24,13 @@
 						</li>
 					{% endif %}
 
-					{# Enlever le commentaire suivant si nécessaire #}
-					{# {% if not is_granted('IS_AUTHENTICATED') %} #}
+					{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
 						<li class="ms-auto d-flex align-items-center">
 							<a class="nav-link" href={{ path('app_login') }}>Connexion</a>
 							<span class="text-light">/</span>
 							<a class="nav-link" href={{ path('app_register') }}>Inscription</a>
 						</li>
-					{# {% endif %} #}
-					{% if is_granted('IS_AUTHENTICATED') %}
+					{% else %}
 						<li class="ms-auto">
 							<a class="nav-link" href={{ path('app_logout') }}>Déconnexion</a>
 						</li>
@@ -42,4 +40,3 @@
 		</div>
 	</nav>
 </header>
-
