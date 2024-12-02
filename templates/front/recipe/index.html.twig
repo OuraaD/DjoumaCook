@@ -1,50 +1,3 @@
-{# {% extends 'front/base.html.twig' %}
-
-{% block title %}Marmytho - Accueil
-{% endblock %}
-
-{% block body %}
-	<main class="container">
-		<div>
-			<h1 class="display-5 fw-bold mb-4">DjoumaCook</h1>
-			<p class="fs-4">"Bienvenue sur DjoumaCook, où chaque plat est un chef-d'œuvre... selon les légendes !"</p>
-		</div>
-
-		<div class="container mt-5">
-			<h1 class="mb-4">Nos recettes</h1>
-			<div class="row">
-				{% for recipe in recipes %}
-					<div class="col-md-4">
-						<div class="card mb-4">
-							{% if recipe.fileName %}
-								<img src="{{ recipe.fileName }}" class="card-img-top" alt="{{ recipe.name }}">
-							{% endif %}
-							<div class="card-body">
-								<h5 class="card-title">{{ recipe.name }}</h5>
-								<p class="card-text">{{ recipe.description|length > 100 ? recipe.description|slice(0, 100) ~ '...' : recipe.description }}</p>
-								<a href="#" class="btn btn-primary">View Recipe</a>
-							</div>
-							<div class="card-footer text-muted">
-								{% if recipe.time %}Time:
-									{{ recipe.time }}
-									mins
-								{% endif %}
-								{% if recipe.nbPeople %}
-									| Serves:
-									{{ recipe.nbPeople }}
-								{% endif %}
-								{% if recipe.difficulty %}
-									| Difficulty:
-									{{ recipe.difficulty }}
-								{% endif %}
-							</div>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-	</main>
-{% endblock %} #}
 
 {% extends 'front/base.html.twig' %}
 
@@ -104,16 +57,3 @@
 	</div>
 </main>{% endblock %}
 
-{# {% for recipe in recipes %}
-	        <div>
-	            <h3>{{ recipe.name }}</h3>
-	            <p>Temps : {{ recipe.time }} minutes</p>
-	            <p>Pour {{ recipe.nbPeople }} personnes</p>
-	            <p>Difficulté : {{ recipe.difficulty }}/6</p>
-	            <p>Prix : {{ recipe.price }}€</p>
-	            {% if recipe.isFavorite %}
-	                <p>Favori</p>
-	            {% endif %}
-	        </div>
-	    {% endfor %}
-	{% endblock %} #}

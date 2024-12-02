@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}404 - Page introuvable{% endblock %}
+
+{% block body %}
+<div class="container text-center mt-5">
+    <h1>404</h1>
+    <h2>{{ message }}</h2>
+    <p>Il semble que cette page soit introuvable ou qu'elle ait été déplacée.</p>
+    <a href="{{ path('home_index') }}" class="btn btn-primary mt-3">Retour à l'accueil</a>
+</div>
+{% endblock %}

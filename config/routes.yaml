@@ -3,3 +3,9 @@ controllers:
         path: ../src/Controller
         namespace: App\Controller
     type: attribute
+
+_error_404:
+    path: /{slug} 
+    controller: App\Controller\ErrorController::show404
+    requirements:
+        slug: ".+" 

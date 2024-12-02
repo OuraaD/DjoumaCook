@@ -7,7 +7,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav w-100">
-
+					
 					{% if not is_granted('ROLE_ADMIN') %}
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('recipe_index') }}">Recettes</a>
@@ -21,8 +21,15 @@
 					{% endif %}
 
 					{% if is_granted('ROLE_ADMIN') %}
-						<li class="nav-item ms-auto">
+						<li class="nav-item">
 							<a class="nav-link" href="{{ path('admin_dashboard_index') }}">Dashboard Admin</a>
+						</li>
+					{% endif %}
+
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<!-- Déplacement du lien Profile dans la liste normale -->
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('user_profile') }}">Profile</a>
 						</li>
 					{% endif %}
 
@@ -32,10 +39,11 @@
 							<span class="text-light">/</span>
 							<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
 						{% else %}
+						
 							<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
 						{% endif %}
 					</li>
-
+					
 				</ul>
 			</div>
 		</div>
